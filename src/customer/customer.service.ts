@@ -4,8 +4,9 @@ import { Customer } from './customer.entity';
 import { Repository } from 'typeorm';
 import { AuthDto } from 'src/auth/auth.dto';
 import { JwtService } from '@nestjs/jwt';
-import { jwtConstants } from 'src/auth/auth.constants';
+import { config } from 'dotenv';
 
+config();
 @Injectable()
 export class CustomerService {
   constructor(
@@ -17,7 +18,7 @@ export class CustomerService {
 
   async getCustomer(token: string): Promise<Customer> {
     const payload = this.jwtService.verify(token, {
-      secret: jwtConstants.secret,
+      secret: process.env.JWT_SECRET
     });
 
     const customer = await this.customerRepository.findOne({

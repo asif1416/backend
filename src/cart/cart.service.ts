@@ -9,10 +9,11 @@ import { Cart } from './cart.entity';
 import { Customer } from '../customer/customer.entity';
 import { Menu } from '../menu/menu.entity';
 import { CartItem } from './cartItem.entity';
-import { jwtConstants } from '../auth/auth.constants';
 import { JwtService } from '@nestjs/jwt';
 import { UpdateCartDto } from './cart.dto';
+import { config } from 'dotenv';
 
+config();
 @Injectable()
 export class CartService {
   constructor(
@@ -89,7 +90,7 @@ export class CartService {
   async getCustomer(token: string): Promise<Customer> {
     try {
       const payload = this.jwtService.verify(token, {
-        secret: jwtConstants.secret,
+        secret: process.env.JWT_SECRET
       });
 
       const customer = await this.customerRepository.findOne({
