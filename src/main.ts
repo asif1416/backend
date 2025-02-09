@@ -19,7 +19,7 @@ async function bootstrap() {
   app.useGlobalGuards(new AuthGuard(jwtService, reflector));
 
   app.enableCors({
-    origin: 'https://calinary-odissey.vercel.app',
+    origin: process.env.FRONTEND_URL,
     credentials: true,
   });
   app.use(helmet());
