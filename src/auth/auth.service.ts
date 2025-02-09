@@ -10,8 +10,9 @@ import { AuthDto } from './auth.dto';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { MailerService } from '@nestjs-modules/mailer';
-import { jwtConstants } from './auth.constants';
+import { config } from 'dotenv';
 
+config();
 @Injectable()
 export class AuthService {
   constructor(
@@ -223,7 +224,7 @@ export class AuthService {
 
     try {
       const decodedToken = this.jwtService.verify(token, {
-        secret: jwtConstants.secret, 
+        secret: process.env.JWT_SECRET, 
       });
       return { isLoggedIn: true, user: decodedToken };
     } catch (error) {
