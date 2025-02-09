@@ -18,9 +18,9 @@ dotenv.config();
       url: process.env.DATABASE_URL,
       autoLoadEntities: true,
       synchronize: true,
-      ssl: {
-        rejectUnauthorized: false,
-      },
+      ssl: process.env.DATABASE_URL.includes('railway')
+        ? { rejectUnauthorized: false }
+        : false,
     }),
   ],
   controllers: [CartController],
