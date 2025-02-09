@@ -10,7 +10,6 @@ import { config } from 'dotenv';
 config();
 
 async function bootstrap() {
-  console.log('DATABASE_URL from env:', process.env.DATABASE_URL);
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
 
@@ -20,7 +19,7 @@ async function bootstrap() {
   app.useGlobalGuards(new AuthGuard(jwtService, reflector));
 
   app.enableCors({
-    origin: 'https://calinary-odissey.vercel.app/',
+    origin: 'https://calinary-odissey.vercel.app',
     credentials: true,
   });
   app.use(helmet());
