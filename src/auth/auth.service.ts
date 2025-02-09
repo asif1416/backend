@@ -224,7 +224,7 @@ export class AuthService {
 
     try {
       const decodedToken = this.jwtService.verify(token, {
-        secret: process.env.JWT_SECRET, 
+        secret: 'idkmysecretkey', 
       });
       return { isLoggedIn: true, user: decodedToken };
     } catch (error) {
