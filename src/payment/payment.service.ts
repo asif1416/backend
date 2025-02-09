@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import * as fetch from 'node-fetch';
 import * as FormData from 'form-data';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -19,9 +19,12 @@ const paymentInitDataProcess = (
   postData['tran_id'] = data.tran_id;
   postData['total_amount'] = parseFloat(data.total_amount);
   postData['currency'] = data.currency;
-  postData['success_url'] = 'http://localhost:3000/payment/success';
-  postData['fail_url'] = 'http://localhost:3000/payment/fail';
-  postData['cancel_url'] = 'http://localhost:3000/payment/cancel';
+  postData['success_url'] =
+    'https://lively-stillness-production.up.railway.app/payment/success';
+  postData['fail_url'] =
+    'https://lively-stillness-production.up.railway.app/payment/fail';
+  postData['cancel_url'] =
+    'https://lively-stillness-production.up.railway.app/payment/cancel';
 
   postData['emi_option'] = data.emi_option;
   postData['emi_max_inst_option'] = data.emi_max_inst_option;
