@@ -24,20 +24,18 @@ import { OrderItem } from './order/orderItem.entity';
     CartModule,
     PaymentModule,
     TypeOrmModule.forRoot({
-          type: 'postgres',
-          url: process.env.DATABASE_URL,
-          autoLoadEntities: true,
-          synchronize: true,
-          ssl: process.env.DATABASE_URL.includes('railway')
-            ? { rejectUnauthorized: false }
-            : false,
-        }),
+      type: 'postgres',
+      url: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
+      autoLoadEntities: true,
+      synchronize: true,
+    }),
     MailerModule.forRoot({
       transport: {
-        host: 'smtp.gmail.com',
+        host: process.env.SMTP_HOST,
         auth: {
-          user: 'ashrafulasif260@gmail.com',
-          pass: 'ucii ijkj xvsg ivzn',
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASSWORD,
         },
       },
     }),
