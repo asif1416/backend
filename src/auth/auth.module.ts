@@ -18,7 +18,7 @@ dotenv.config();
     CustomerModule,
     JwtModule.register({
       global: true,
-      secret: 'idkmysecretkey',
+      secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '1h' },
     }),
   ],
