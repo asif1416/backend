@@ -10,6 +10,7 @@ import { config } from 'dotenv';
 config();
 
 async function bootstrap() {
+  console.log('DATABASE_URL from env:', process.env.DATABASE_URL);
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
 
