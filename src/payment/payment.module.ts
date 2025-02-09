@@ -14,18 +14,6 @@ dotenv.config();
 @Module({
   imports: [
     TypeOrmModule.forFeature([Payment, Order]),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      url: process.env.DATABASE_URL,
-      autoLoadEntities: true,
-      synchronize: true,
-      ssl: process.env.DATABASE_URL.includes('railway')
-        ? { rejectUnauthorized: false }
-        : false,
-    }),
-    ConfigModule.forRoot({
-      isGlobal: true,
-    }),
   ],
   controllers: [PaymentController],
   providers: [

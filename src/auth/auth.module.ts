@@ -15,15 +15,6 @@ dotenv.config();
 @Module({
   imports: [
     TypeOrmModule.forFeature([Customer]),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      url: process.env.DATABASE_URL,
-      autoLoadEntities: true,
-      synchronize: true,
-      ssl: process.env.DATABASE_URL.includes('railway')
-        ? { rejectUnauthorized: false }
-        : false,
-    }),
     CustomerModule,
     JwtModule.register({
       global: true,

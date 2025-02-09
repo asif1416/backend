@@ -13,15 +13,6 @@ dotenv.config();
 @Module({
   imports: [
     TypeOrmModule.forFeature([Cart, CartItem, Customer, Menu]),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      url: process.env.DATABASE_URL,
-      autoLoadEntities: true,
-      synchronize: true,
-      ssl: process.env.DATABASE_URL.includes('railway')
-        ? { rejectUnauthorized: false }
-        : false,
-    }),
   ],
   controllers: [CartController],
   providers: [CartService],
