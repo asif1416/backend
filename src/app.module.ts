@@ -7,14 +7,11 @@ import { MenuModule } from './menu/menu.module';
 import { OrderModule } from './order/order.module';
 import { CartModule } from './cart/cart.module';
 import { MailerModule } from '@nestjs-modules/mailer';
+import { ContactModule } from './contact/contact.module';
 import { PaymentModule } from './payment/payment.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Order } from './order/order.entity';
-import { Payment } from './payment/payment.entity';
-import { Customer } from './customer/customer.entity';
-import { OrderItem } from './order/orderItem.entity';
-//let's go
+
 @Module({
   imports: [
     AuthModule,
@@ -23,6 +20,7 @@ import { OrderItem } from './order/orderItem.entity';
     OrderModule,
     CartModule,
     PaymentModule,
+    ContactModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       url: process.env.DATABASE_URL,
