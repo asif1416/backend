@@ -29,9 +29,8 @@ export class PaymentController {
         );
         await this.sslCommerzPaymentService.paymentSuccess(paymentData);
 
-        // Redirect to frontend success page with tran_id
         return res.redirect(
-          `http://localhost:3001/payment/success?tran_id=${tran_id}`,
+          `https://lively-stillness-production.up.railway.app/payment/success?tran_id=${tran_id}`,
         );
       } catch (error) {
         return res
@@ -39,7 +38,9 @@ export class PaymentController {
           .json({ message: 'Internal Server Error', error: error.message });
       }
     } else {
-      return res.redirect(`http://localhost:3001/payment/fail`);
+      return res.redirect(
+        `https://lively-stillness-production.up.railway.app/payment/fail?tran_id=${tran_id}`,
+      );
     }
   }
 
