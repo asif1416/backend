@@ -20,6 +20,8 @@ async function bootstrap() {
 
   app.enableCors({
     origin: 'https://calinary-odissey.vercel.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type, Authorization',
     credentials: true,
   });
   app.use(helmet());
