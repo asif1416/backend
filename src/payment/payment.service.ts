@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import * as fetch from 'node-fetch';
-import FormData from 'form-data';
+import * as FormData from 'form-data';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Payment } from './payment.entity';
@@ -120,7 +120,7 @@ export class PaymentService {
 
     const data = {
       product_category: 'electronics',
-      tran_id: formattedTranId, // Use formatted transaction ID
+      tran_id: formattedTranId, 
       order_id: order.id.toString(),
       total_amount: order.totalPrice.toString(),
       currency: 'BDT',
