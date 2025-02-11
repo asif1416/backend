@@ -18,12 +18,10 @@ async function bootstrap() {
 
   app.useGlobalGuards(new AuthGuard(jwtService, reflector));
 
-   app.enableCors({
-     origin: 'https://calinary-odissey.vercel.app', 
-     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS', 
-     allowedHeaders: 'Content-Type, Authorization',
-     credentials: true, 
-   });
+  app.enableCors({
+    origin: 'https://calinary-odissey.vercel.app',
+    credentials: true,
+  });
   app.use(helmet());
   app.use(cookieParser());
   await app.listen(process.env.PORT);
