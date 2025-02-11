@@ -4,7 +4,6 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { Customer } from '../customer/customer.entity';
 import { JwtModule } from '@nestjs/jwt';
-import { jwtConstants } from './auth.constants';
 import { CustomerModule } from '../customer/customer.module';
 import { AuthGuard } from './auth.guard';
 import { Reflector } from '@nestjs/core';
