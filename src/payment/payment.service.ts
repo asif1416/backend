@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import * as fetch from 'node-fetch';
-import * as FormData from 'form-data';
+import FormData from 'form-data';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Payment } from './payment.entity';
