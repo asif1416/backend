@@ -11,7 +11,9 @@ import { ContactModule } from './contact/contact.module';
 import { PaymentModule } from './payment/payment.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { config } from 'dotenv';
 
+config();
 @Module({
   imports: [
     AuthModule,
