@@ -3,13 +3,19 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class ContactService {
-  constructor(private readonly mailService: MailerService) {} 
+  constructor(private readonly mailService: MailerService) {}
 
   async sendEmail(contactData: {
     name: string;
     email: string;
     message: string;
   }) {
+    console.log('Received Data:', contactData); // Debug log
+
+    if (!contactData.message || contactData.message.trim().length < 4) {
+      throw new Error('Message length must be at least 4 letters.');
+    }
+
     const mailOptions = {
       from: contactData.email,
       to: 'ashrafulasif260@gmail.com',
