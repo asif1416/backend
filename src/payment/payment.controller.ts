@@ -30,7 +30,7 @@ export class PaymentController {
         await this.sslCommerzPaymentService.paymentSuccess(paymentData);
 
         return res.redirect(
-          `https://lively-stillness-production.up.railway.app/payment/success?tran_id=${tran_id}`,
+          `https://calinary-odissey.vercel.app/payment/success?tran_id=${tran_id}`,
         );
       } catch (error) {
         return res
@@ -39,7 +39,7 @@ export class PaymentController {
       }
     } else {
       return res.redirect(
-        `https://lively-stillness-production.up.railway.app/payment/fail?tran_id=${tran_id}`,
+        `https://calinary-odissey.vercel.app/payment/fail?tran_id=${tran_id}`,
       );
     }
   }
