@@ -32,11 +32,11 @@ config();
     }),
     MailerModule.forRoot({
       transport: {
-        host: 'smtp.gmail.com',
+        host: process.env.SMTP_HOST,
         secure: false,
         auth: {
-          user: 'ashrafulasif260@gmail.com',
-          pass: 'dmpd ekrn qjwg eolz',
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASSWORD,
         },
       },
     }),
